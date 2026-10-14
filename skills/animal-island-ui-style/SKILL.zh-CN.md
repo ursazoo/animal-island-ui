@@ -78,3 +78,7 @@ props 参考按大类分组在 `references/components/` 下（props、合法取�
 12. 优先用库组件而非裸 HTML：可见 UI 不允许原生 `<button>`、`<input>`、`<select>`、原生 checkbox/radio
 13. 只从包根和 `animal-island-ui/style` 导入，不做深路径导入
 14. 自定义元素用 `var(--animal-*)` token 上色，不硬编码颜色；不用 `className`/`style` 覆盖组件的颜色、圆角、阴影
+
+## Taro + React（微信 + H5，仅此 fork）
+
+Taro 项目请使用 [接入说明](references/taro-project.md)、[基础控件](references/components/taro-controls.md)、[选择与浮层](references/components/taro-selection.md)。这些平台专用入口、样式、原生属性和 PNG 图标规则优先于上面的 Web 专用导入和图标说明，目前仅首批五个组件可用。

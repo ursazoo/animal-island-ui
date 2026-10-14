@@ -1,6 +1,6 @@
 # Build and Release
 
-`npm run build` produces the published artifact: `vite build` emits JavaScript, CSS, and assets into `dist/`, then
+`npm run build:web` produces the Web artifact: `vite build` emits JavaScript, CSS, and assets into `dist/`, then
 `tsc --project tsconfig.build.json --emitDeclarationOnly` emits declarations into `dist/types/`. The rationale behind
 the choices below is recorded in [../adr/](../adr/); this page is the contract itself.
 
@@ -32,7 +32,7 @@ build logic without preserving the following breaks consumer tree-shaking:
 
 - `exports` maps `.` to the ES/CJS/types triple, `./style` to `dist/index.css`, `./es/*` to the preserved ES modules,
   and `./items/*` to the copied item assets.
-- `sideEffects: false` lets bundlers drop unused modules.
+- `sideEffects: ["**/*.css", "**/*.less"]` preserves style imports while allowing unused JavaScript modules to be dropped.
 - `files` limits the published tarball to the build output plus the top-level type shim and docs.
 - `dependencies` holds exactly one runtime dependency, `naive-icons` (the icon set; pure
   React + SVG, no transitive tree). Everything else third-party is a peerDependency or a
@@ -52,3 +52,7 @@ with an error if the coverage summary is missing.
 
 `npm run build:demo` builds the demo into `demo-dist/` using `vite.config.demo.ts`; `npm run deploy` chains that with
 `gh-pages -d demo-dist` to publish it. The demo is never part of the npm artifact.
+
+## Taro fork build
+
+`npm run build` now runs the unchanged Web build followed by `vite.config.taro.ts`. Taro has a separate ESM entry, type entry, style entry, optional browser fonts and an opt-in H5 adapter. Both builds preserve modules and split CSS. CSS/Less are marked as side effects so consumer bundlers retain explicit style imports. Taro peers are optional for Web consumers. Root Rollup 3 satisfies Taro 4.3's optional peer; Vite 7 retains its nested Rollup 4. See [first-batch usage](taro-first-batch.md).

@@ -49,3 +49,6 @@ coverage/
 *.tmp
 *.temp
 .npmrc
+# Packed preview consumer
+examples/taro/vendor/
+examples/taro/.swc/

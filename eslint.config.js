@@ -8,12 +8,13 @@ export default tseslint.config(
     // 忽略构建产物与依赖
     {
         ignores: [
-            'dist/**',
+            '**/dist/**',
             'demo-dist/**',
             'coverage/**',
-            'node_modules/**',
+            '**/node_modules/**',
             'scripts/**',
             '*.config.js',
+            '**/*.config.cjs',
             '*.config.ts',
             // 第三方压缩库 + 对应声明文件（来自 Loading/island/）
             '**/*.min.js',
@@ -30,7 +31,7 @@ export default tseslint.config(
 
     // 业务源码
     {
-        files: ['src/**/*.{ts,tsx}', 'demo/**/*.{ts,tsx}', 'test/**/*.{ts,tsx}'],
+        files: ['src/**/*.{ts,tsx}', 'demo/**/*.{ts,tsx}', 'test/**/*.{ts,tsx}', 'examples/**/*.{ts,tsx}'],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'module',

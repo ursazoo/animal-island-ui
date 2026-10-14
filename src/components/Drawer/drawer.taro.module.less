@@ -1,0 +1,62 @@
+@import './drawer.module.less';
+.host {
+    position: fixed;
+    inset: 0;
+    font-family: var(--animal-font-family);
+}
+.mask {
+    z-index: 0;
+}
+.panel {
+    z-index: 1;
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.panelBottom {
+    min-height: 40vh;
+    max-height: 75vh;
+}
+.header {
+    padding-top: 20px;
+}
+.title {
+    font-size: 24px;
+}
+.close {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0 -8px 0 8px;
+    flex-shrink: 0;
+    &::after {
+        border: none;
+    }
+}
+.icon {
+    width: 32px;
+    height: 32px;
+}
+.body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 0;
+    width: 100%;
+    overscroll-behavior: contain;
+    scroll-padding: 24px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+.content {
+    padding: 8px 24px 24px;
+}
+.footer {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    position: relative;
+    z-index: 1;
+    padding: 16px 24px 24px;
+    background: rgb(247, 243, 223);
+    box-shadow: 0 -6px 16px rgba(61, 52, 40, 0.08);
+}

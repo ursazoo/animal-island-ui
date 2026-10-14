@@ -4,6 +4,7 @@
 
 ## 目录
 
+- [taro-ui-adaptation-standard.md](./taro-ui-adaptation-standard.md) —— Taro 改造范围、原有美术风格、移动交互、产物消费、预览和验收标准。
 - [repository-structure.md](./repository-structure.md) —— 项目简介、技术栈、npm 脚本、目录结构与路径别名。
 - [component-development.md](./component-development.md) —— 新增或修改组件的完整流程：文件结构、导出、demo 注册、文档同步。
 - [coding-standards.md](./coding-standards.md) —— TypeScript、CSS Modules、设计 token 用法、lint 与格式化规则、禁止事项。
@@ -18,3 +19,5 @@
 3. `component-development.md`：日常开发的主流程。
 4. `coding-standards.md` 与 `testing.md`：一次改动落地前必须满足的规则。
 5. `build-and-release.md`：只在改动 `vite.config.ts`、`package.json` 或发布产物时才需要看。
+
+- [Taro first batch / Taro 第一批组件](taro-first-batch.md)

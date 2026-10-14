@@ -106,3 +106,7 @@ values, defaults — copied from source):
 13. Import only from the package root and `animal-island-ui/style` — no deep imports.
 14. Style custom elements with `var(--animal-*)` tokens, not hard-coded colors; never use
     `className`/`style` to override a component's colors, radii, or shadows.
+
+## Taro + React (WeChat + H5, this fork only)
+
+For Taro consumers use [Taro setup](references/taro-project.md), [controls](references/components/taro-controls.md) and [selection/overlays](references/components/taro-selection.md). These platform-specific exports, style entries, native props and PNG icon assets override the Web-only import/icon instructions above. Only the first five components are available.

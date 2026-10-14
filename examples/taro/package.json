@@ -1,0 +1,36 @@
+{
+    "name": "animal-island-taro-preview",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build:h5": "taro build --type h5",
+        "build:weapp": "taro build --type weapp",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@tarojs/components": "4.3.0",
+        "@tarojs/helper": "4.3.0",
+        "@tarojs/react": "4.3.0",
+        "@tarojs/runtime": "4.3.0",
+        "@tarojs/shared": "4.3.0",
+        "@tarojs/taro": "4.3.0",
+        "animal-island-ui": "file:vendor/animal-island-ui-2.2.1.tgz",
+        "classnames": "2.5.1",
+        "react": "18.3.1",
+        "react-dom": "18.3.1"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.29.7",
+        "@tarojs/cli": "4.3.0",
+        "@tarojs/plugin-framework-react": "4.3.0",
+        "@tarojs/plugin-platform-h5": "4.3.0",
+        "@tarojs/plugin-platform-weapp": "4.3.0",
+        "@tarojs/webpack5-runner": "4.3.0",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
+        "@types/webpack-env": "^1.18.8",
+        "babel-preset-taro": "4.3.0",
+        "less": "^4.2.1",
+        "typescript": "~5.7.3"
+    }
+}

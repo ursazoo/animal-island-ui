@@ -1,38 +1,8 @@
 import React from 'react';
 import styles from './card.module.less';
 
-export type CardType = 'default' | 'dashed';
-
-export type CardColor =
-    | 'default'
-    | 'app-pink'
-    | 'purple'
-    | 'app-blue'
-    | 'app-yellow'
-    | 'app-orange'
-    | 'app-teal'
-    | 'app-green'
-    | 'app-red'
-    | 'lime-green'
-    | 'yellow-green'
-    | 'brown'
-    | 'warm-peach-pink';
-
-export type CardPattern =
-    | 'none'
-    | 'default'
-    | 'app-pink'
-    | 'purple'
-    | 'app-blue'
-    | 'app-yellow'
-    | 'app-orange'
-    | 'app-teal'
-    | 'app-green'
-    | 'app-red'
-    | 'lime-green'
-    | 'yellow-green'
-    | 'brown'
-    | 'warm-peach-pink';
+import type { CardType, CardColor, CardPattern } from './Card.types';
+export type { CardType, CardColor, CardPattern } from './Card.types';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     /** 卡片类型 */

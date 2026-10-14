@@ -1,0 +1,68 @@
+@import './button.module.less';
+.btn {
+    box-sizing: border-box;
+    margin: 0;
+    overflow: visible;
+    min-width: 44px;
+    -webkit-tap-highlight-color: transparent;
+    &::after {
+        border: none;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -6px 0;
+    }
+}
+.btn.disabled {
+    opacity: 0.5;
+    box-shadow: none;
+}
+.btn.btn-loading {
+    opacity: 1;
+}
+.icon {
+    width: 28px;
+    height: 28px;
+}
+.btn.btn-primary.pressed {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #bdaea0;
+}
+.btn.btn-default.pressed,
+.btn.btn-dashed.pressed {
+    color: var(--animal-primary-color-active);
+    border-color: var(--animal-primary-color-active);
+}
+.btn.btn-danger.btn-primary.pressed {
+    box-shadow: 0 1px 0 var(--animal-error-color-active);
+}
+
+.btn.btn {
+    width: auto;
+}
+.btn.btn.btn-block {
+    width: 100%;
+}
+.btn.btn.disabled {
+    color: var(--animal-text-color);
+}
+.btn.btn.btn-loading {
+    color: #fff;
+}
+
+// A shared action row has one visual baseline, including hover/press/disabled states.
+.btn.btn.paired {
+    &,
+    &:hover,
+    &:active,
+    &.pressed,
+    &.disabled {
+        box-shadow: var(--animal-shadow-sm);
+        transform: none;
+    }
+    &:active:not(:disabled),
+    &.pressed:not(.disabled) {
+        opacity: 0.8;
+    }
+}

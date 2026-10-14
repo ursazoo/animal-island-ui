@@ -15,14 +15,28 @@
         "./style": "./dist/index.css",
         "./dist/index.css": "./dist/index.css",
         "./es/*": "./dist/es/*",
-        "./items/*": "./dist/items/*"
+        "./items/*": "./dist/items/*",
+        "./taro": {
+            "types": "./dist/types/taro/index.d.ts",
+            "import": "./dist/taro/index.js"
+        },
+        "./taro/style": "./dist/taro/style.css",
+        "./taro/fonts": "./dist/taro/fonts.css",
+        "./taro/h5": {
+            "types": "./dist/types/taro/h5.d.ts",
+            "import": "./dist/taro/h5.js",
+            "require": "./dist/taro/h5.js"
+        }
     },
     "files": [
         "dist",
         "items.d.ts",
         "README.md"
     ],
-    "sideEffects": false,
+    "sideEffects": [
+        "**/*.css",
+        "**/*.less"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/guokaigdg/animal-island-ui"
@@ -34,7 +48,7 @@
     "author": "guokaigdg",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly",
+        "build": "npm run build:web && npm run build:taro",
         "build:demo": "vite build --config vite.config.demo.ts",
         "prepublishOnly": "npm run build",
         "deploy": "npm run build:demo && gh-pages -d demo-dist",
@@ -51,12 +65,17 @@
         "format:check": "prettier --check .",
         "ci": "npm run format:check && npm run check:docs && npm run lint && npm run typecheck && npm run test:run && npm run build",
         "setup:hooks": "git config core.hooksPath .githooks",
-        "prepare": "npm run setup:hooks"
+        "prepare": "npm run setup:hooks",
+        "build:web": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly",
+        "build:taro": "vite build --config vite.config.taro.ts",
+        "preview:prepare": "node scripts/prepare-taro-preview.mjs"
     },
     "peerDependencies": {
         "classnames": "^2.5.1",
         "react": ">=17.0.0",
-        "react-dom": ">=17.0.0"
+        "react-dom": ">=17.0.0",
+        "@tarojs/taro": "^4.3.0",
+        "@tarojs/components": "^4.3.0"
     },
     "dependencies": {
         "naive-icons": "^1.6.0"
@@ -69,6 +88,8 @@
         "@fontsource/noto-sans-sc": "^5.2.9",
         "@fontsource/nunito": "^5.2.7",
         "@laynezh/vite-plugin-lib-assets": "^2.1.3",
+        "@tarojs/components": "^4.3.0",
+        "@tarojs/taro": "^4.3.0",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@testing-library/user-event": "^14.6.1",
@@ -86,9 +107,12 @@
         "jsdom": "^29.1.1",
         "less": "^4.2.1",
         "modern-screenshot": "^4.6.0",
+        "playwright": "^1.64.0",
         "prettier": "^3.4.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "rollup": "^3.30.0",
+        "sharp": "^0.35.5",
         "typescript": "^5.7.3",
         "typescript-eslint": "^8.0.0",
         "vite": "^7.3.2",
@@ -109,5 +133,13 @@
     "allowScripts": {
         "esbuild": true,
         "fsevents": true
+    },
+    "peerDependenciesMeta": {
+        "@tarojs/taro": {
+            "optional": true
+        },
+        "@tarojs/components": {
+            "optional": true
+        }
     }
 }

@@ -2,9 +2,8 @@ import React from 'react';
 import { DonutIcon } from 'naive-icons';
 import styles from './button.module.less';
 
-export type ButtonType = 'primary' | 'default' | 'dashed' | 'text' | 'link';
-export type ButtonSize = 'small' | 'middle' | 'large';
-export type ButtonHTMLType = 'submit' | 'reset' | 'button';
+import type { ButtonType, ButtonSize, ButtonHTMLType } from './Button.types';
+export type { ButtonType, ButtonSize, ButtonHTMLType } from './Button.types';
 
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     /** 按钮类型 */

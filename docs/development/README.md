@@ -5,6 +5,8 @@ How to build, test, and ship changes to animal-island-ui. Visual specifications 
 
 ## Contents
 
+- [taro-ui-adaptation-standard.md](./taro-ui-adaptation-standard.md) — Taro migration scope, original visual fidelity,
+  mobile interaction contracts, package consumption, previews, and acceptance.
 - [repository-structure.md](./repository-structure.md) — what the project is, its tech stack, npm scripts, directory
   layout, and path aliases.
 - [component-development.md](./component-development.md) — the workflow for adding or changing a component: file layout,
@@ -22,3 +24,5 @@ How to build, test, and ship changes to animal-island-ui. Visual specifications 
 3. `component-development.md` — the main day-to-day workflow.
 4. `coding-standards.md` and `testing.md` — the rules a change has to satisfy before it can land.
 5. `build-and-release.md` — only when touching `vite.config.ts`, `package.json`, or the published artifact.
+
+- [Taro first batch / Taro 第一批组件](taro-first-batch.md)

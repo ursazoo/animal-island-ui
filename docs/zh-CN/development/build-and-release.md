@@ -1,6 +1,6 @@
 # 构建与发布
 
-`npm run build` 产出发布物：`vite build` 把 JavaScript、CSS 与静态资源输出到 `dist/`，随后 `tsc --project tsconfig.build.json --emitDeclarationOnly` 把类型声明输出到 `dist/types/`。下面这些选择背后的理由记录在 [../adr/](../adr/)，本页是契约本身。
+`npm run build:web` 产出 Web 发布物：`vite build` 把 JavaScript、CSS 与静态资源输出到 `dist/`，随后 `tsc --project tsconfig.build.json --emitDeclarationOnly` 把类型声明输出到 `dist/types/`。下面这些选择背后的理由记录在 [../adr/](../adr/)，本页是契约本身。
 
 ## 构建契约
 
@@ -19,7 +19,7 @@
 `package.json` 已经为按需引入配好，保持这个状态：
 
 - `exports` 把 `.` 映射到 ES / CJS / types 三件套，`./style` 映射到 `dist/index.css`，`./es/*` 映射到保留模块结构的 ES 产物，`./items/*` 映射到拷贝出来的 item 资源。
-- `sideEffects: false` 让打包器可以丢弃未使用的模块。
+- `sideEffects: ["**/*.css", "**/*.less"]` 保留样式导入，同时允许打包器丢弃未使用的 JavaScript 模块。
 - `files` 把发布的 tarball 限制在构建产物加顶层类型垫片与文档。
 - `dependencies` 只保留一个运行时依赖 `naive-icons`（图标集，纯 React + SVG，无传递依赖）。其余第三方包一律要么是 peerDependency，要么是 devDependency。不得再新增运行时依赖。
 
@@ -32,3 +32,7 @@
 ## Demo 站点
 
 `npm run build:demo` 用 `vite.config.demo.ts` 把 demo 构建到 `demo-dist/`；`npm run deploy` 在此之后接上 `gh-pages -d demo-dist` 发布。demo 永远不进 npm 产物。
+
+## Taro fork build
+
+`npm run build` 先运行原 Web 构建，再运行 `vite.config.taro.ts`。Taro 单独提供 ESM、类型、样式、可选浏览器字体和 H5 适配器入口。两种构建都保留模块和 CSS 拆分；CSS/Less 标记为副作用，防止消费者丢弃显式样式导入。Taro peer 对 Web 消费者可选。根 Rollup 3 满足 Taro 4.3 可选 peer，Vite 7 仍用嵌套 Rollup 4。详见 [首批接入说明](taro-first-batch.md)。
