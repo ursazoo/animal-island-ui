@@ -25,6 +25,10 @@ Conflict priority (high → low): repository source code (`*.tsx` / `*.module.le
 `*.config.ts`) → this file → docs. When docs disagree with source, source wins — fix the
 doc in the same change.
 
+Before changing Taro components, mobile interactions, Taro package/build entries, previews,
+or the Skill's Taro guidance, read [Taro UI adaptation standard](docs/development/taro-ui-adaptation-standard.md).
+It defines the migration scope, visual baseline, interaction contracts, and acceptance evidence.
+
 ## Verification
 
 ```bash
